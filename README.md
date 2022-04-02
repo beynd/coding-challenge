@@ -59,7 +59,7 @@ ignore it if you want. You have the freedom to build how you see fit.
 1. Some of the numbers are in millions (M) and some are in thousands (K)
 2. What if the data set grew 10x? 100x?
 
-## Not much time 
+## Not much time
 
 You should aim to cap your time at around 2 hours. You've got your life to live.
 The solution doesn't need to be perfect, but you should aim to get the main stuff
