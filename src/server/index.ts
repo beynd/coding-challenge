@@ -1,11 +1,21 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('data/instagram_influencers.sqlite3');
+import express, {Express, Request, Response} from 'express';
 
 async function main() {
-    db.serialize(() => {
-        db.get("select * from influencers LIMIT 1", (err: Error, row: any) => {
-            console.log(row);
+    const db = new sqlite3.Database('data/instagram_influencers.sqlite3');
+    const app: Express = express();
+    const port = 3000;
+
+    app.get('/', (req: Request, res: Response) => {
+        db.serialize(() => {
+            db.get("select * from influencers", (err: Error, row: any) => {
+                console.log(row);
+            });
         });
+    })
+
+    app.listen(port, () => {
+        console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
     });
 }
 
