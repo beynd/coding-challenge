@@ -1,0 +1,21 @@
+type Engagement {
+  authentic: Int!
+  average: Int!
+}
+
+type Influencer {
+  ID: String! # name
+  screenName: String
+  categories: [String!]!
+  followers: Int!
+  country: String!
+  engagement: Engagement!
+}
+
+type FilterResult {
+  nodes: [Influencer]!
+}
+
+type Query {
+  all: FilterResult!
+}

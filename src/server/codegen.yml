@@ -1,0 +1,11 @@
+schema:
+  - '../../schema.graphql'
+generates:
+  'types.ts':
+    plugins:
+      - typescript:
+          skipTypename: true
+
+hooks:
+  afterAllFileWrite:
+    - prettier --write
