@@ -16,6 +16,15 @@ type FilterResult {
   nodes: [Influencer]!
 }
 
+input FilterInput {
+  categories: [String]
+  countries: [String]
+}
+
 type Query {
   all: FilterResult!
+  filter(filter: FilterInput!): FilterResult!
+
+  countries: [String!]!
+  categories: [String!]!
 }
