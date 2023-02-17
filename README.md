@@ -1,18 +1,48 @@
 # Beyond Code Challenge
 
+<hr>
+
+## Install
+
+```bash
+  cd src/server
+  yarn install
+  cd - && cd src/client
+  yarn install
+  cd -
+```
+
+## Run
+
+In separate terminal sessions do
+
+```bash
+  yarn server:run
+```
+
+```bash
+  yarn client:run
+```
+
+This opens `http://localhost:3000/` in the default browser.
+
+GraphQL playground `http://localhost:4000/graphql`
+
+<hr>
+
 ## What to do (summary)
 
 1. Read this entire README -- you should have the full picture
    before you start.
 2. Plan your time a little bit. Don't spend a long time on the challenge.
 3. Build your solution.
-4. Check in your code to a GitHub repo -- don't be afraid to continually 
+4. Check in your code to a GitHub repo -- don't be afraid to continually
    commit code, some history can be cool to see.
 5. Either make your repo public, or add me as a viewer (ask me for my email).
 
 ## The challenge
 
-In this challenge, a client will retrieve some data from a server, which 
+In this challenge, a client will retrieve some data from a server, which
 returns the data from a static CSV file. The client does some processing
 of the data to show a couple of helpful insights from the data.
 
@@ -68,10 +98,10 @@ if you had more time, and any assumptions you made.
 
 2 hours probably isn't enough time to create a really elegant solution for this
 challenge. Part of the test is to see how you handle a limited time budget. So
-it's totally expected that things may not be fully complete, and even a little 
+it's totally expected that things may not be fully complete, and even a little
 scrappy in places.
 
-To that end, I'd recommend planning your time a little bit and pretending 
+To that end, I'd recommend planning your time a little bit and pretending
 you're already working in a startup.
 
 ## Deliver
