@@ -1,5 +1,6 @@
 ### TODO
 
+- [ ] data: duplicated user_ids: find way to either merge or clean those automatically
 - [ ] server: use enum for column names, for types keys and in mapHeaders
 - [ ] server: support numeric range filters
 - [ ] client: render range sliders for `egagementLimit` and `followersLimit`
