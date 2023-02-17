@@ -1,0 +1,25 @@
+schema:
+  - '../../schema.graphql'
+generates:
+  'src/types.ts':
+    plugins:
+      - typescript:
+          skipTypename: true
+  'src/':
+    documents:
+      - "src/*.ts"
+    preset: near-operation-file
+    presetConfig:
+      baseTypesPath: types.ts
+    plugins:
+      - typescript-operations
+    config:
+      skipTypename: true
+      avoidOptionals: true
+      dedupeOperationSuffix: true
+      useTypeImports: true
+
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+

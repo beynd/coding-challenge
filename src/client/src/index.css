@@ -1,0 +1,49 @@
+body {
+  margin: 1rem 2rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code,
+td.number {
+  font-family: monospace;
+}
+
+h3 {
+  margin: 1.25rem 0 0.75rem;
+}
+
+input[disabled] ~ span {
+  opacity: 0.5;
+}
+
+.filterBox {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.filterBox > label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-basis: 15rem;
+}
+
+th {
+  text-align: left;
+  font-weight: normal;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+td,
+th {
+  padding: 0 1rem;
+}
+
+th.number,
+td.number {
+  text-align: right;
+}
