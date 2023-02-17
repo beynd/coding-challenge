@@ -5,6 +5,7 @@ generates:
     plugins:
       - typescript:
           skipTypename: true
+      - typescript-resolvers
 
 hooks:
   afterAllFileWrite:
