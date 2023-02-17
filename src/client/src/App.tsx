@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { useQuery } from '@apollo/client';
 
+import useCachedQuery from './hooks/use-cached-query';
+
 import {
   STATIC,
   StaticQuery,
@@ -15,21 +17,14 @@ import PerCategory from './components/PerCategory';
 import PerCountry from './components/PerCountry';
 
 function App() {
-  const [filters, setFilters] = useState<{
-    countries: Set<string>;
-    categories: Set<string>;
-    engagementLimit: number;
-    followersLimit: number;
-  }>({
-    countries: new Set(),
-    categories: new Set(),
-    engagementLimit: 0,
-    followersLimit: 0,
+  const [filters, setFilters] = useState({
+    countries: new Set<string>(),
+    categories: new Set<string>(),
   });
 
   const { data: staticData } = useQuery<StaticQuery>(STATIC);
 
-  const { data, loading } = useQuery<FilterQuery, FilterQueryVariables>(
+  const { data, loading } = useCachedQuery<FilterQuery, FilterQueryVariables>(
     FILTER,
     {
       variables: {
@@ -62,8 +57,6 @@ function App() {
 
   return (
     <>
-      {loading ? 'Loading...' : '\u00A0'}
-
       <div className="flexHorizontal">
         <PerCategory />
         <PerCountry />
@@ -131,14 +124,14 @@ function App() {
 
               setFilters((prevFilters) => ({
                 ...prevFilters,
-                counties: filters.countries,
+                countries: filters.countries,
               }));
             }}
           />
         ))}
       </div>
 
-      {!!filteredNodes.length && <ResultsTable influencers={filteredNodes} />}
+      <ResultsTable influencers={filteredNodes} />
     </>
   );
 }

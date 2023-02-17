@@ -133,7 +133,9 @@ const resolvers: Resolvers = {
               )
             : categories?.includes('N/A'),
         )
-        .filter(({ country }) => countries?.includes(country) || true);
+        .filter(({ country }) =>
+          countries?.length ? countries.includes(country) : true,
+        );
 
       return { nodes };
     },

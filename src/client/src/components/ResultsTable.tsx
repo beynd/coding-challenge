@@ -1,4 +1,4 @@
-import React, { useState, useMemo, MouseEventHandler, ReactNode } from 'react';
+import React, { useMemo } from 'react';
 import { FilterQuery } from '../queries';
 import { humanDecimal } from '../helpers';
 
