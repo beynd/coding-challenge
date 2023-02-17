@@ -23,7 +23,7 @@ const PerCategory = () => {
               {influencers.length}
             </summary>
 
-            <table>
+            <table className="fullWidth">
               <thead>
                 <tr>
                   <th>User</th>

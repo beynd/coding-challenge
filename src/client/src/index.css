@@ -20,10 +20,14 @@ input[disabled] ~ span {
 .flexHorizontal {
   display: flex;
   flex-direction: row;
-  gap: 0.25rem;
+  gap: 1rem;
 }
 .flexHorizontal > div {
   flex-basis: 50%;
+}
+
+.fullWidth {
+  width: 100%;
 }
 
 .filterBox {

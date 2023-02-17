@@ -22,7 +22,7 @@ const PerCountry = () => {
               {influencers.length}
             </summary>
 
-            <table>
+            <table className="fullWidth">
               <thead>
                 <tr>
                   <th>User</th>
