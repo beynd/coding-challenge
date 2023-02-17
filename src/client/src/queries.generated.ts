@@ -23,3 +23,37 @@ export type FilterQuery = {
     } | null>;
   };
 };
+
+export type PerCategoryByFollowersQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
+
+export type PerCategoryByFollowersQuery = {
+  perCategoryByFollowers: {
+    nodes: Array<{
+      ID: string;
+      value: Array<{
+        ID: string;
+        screenName: string | null;
+        followers: number;
+      }>;
+    } | null>;
+  };
+};
+
+export type PerCountryByEngAvgQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
+
+export type PerCountryByEngAvgQuery = {
+  perCountryByEngAvg: {
+    nodes: Array<{
+      ID: string;
+      value: Array<{
+        ID: string;
+        screenName: string | null;
+        engagement: { average: number };
+      }>;
+    } | null>;
+  };
+};

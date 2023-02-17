@@ -11,6 +11,8 @@ import {
 
 import Checkbox from './components/Checkbox';
 import ResultsTable from './components/ResultsTable';
+import PerCategory from './components/PerCategory';
+import PerCountry from './components/PerCountry';
 
 function App() {
   const [filters, setFilters] = useState<{
@@ -61,6 +63,11 @@ function App() {
   return (
     <>
       {loading ? 'Loading...' : '\u00A0'}
+
+      <div className="flexHorizontal">
+        <PerCategory />
+        <PerCountry />
+      </div>
 
       <h3>
         Categories{' '}

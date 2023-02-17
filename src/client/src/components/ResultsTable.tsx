@@ -33,7 +33,7 @@ const ResultsTable = ({
             <th>Name</th>
             <th>Country</th>
             <th>Categories</th>
-            <th className="number">Engagement</th>
+            <th className="number">Authentic engagement %</th>
             <th className="number">Followers ⬇️</th>
           </tr>
         </thead>

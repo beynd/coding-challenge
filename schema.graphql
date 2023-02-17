@@ -16,6 +16,15 @@ type FilterResult {
   nodes: [Influencer]!
 }
 
+type PerKeyEntry {
+  ID: String! # category name or country
+  value: [Influencer!]!
+}
+
+type PerKeyResult {
+  nodes: [PerKeyEntry]!
+}
+
 input FilterInput {
   categories: [String]
   countries: [String]
@@ -24,6 +33,8 @@ input FilterInput {
 type Query {
   all: FilterResult!
   filter(filter: FilterInput!): FilterResult!
+  perCategoryByFollowers: PerKeyResult!
+  perCountryByEngAvg: PerKeyResult!
 
   countries: [String!]!
   categories: [String!]!

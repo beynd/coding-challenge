@@ -138,6 +138,61 @@ const resolvers: Resolvers = {
       return { nodes };
     },
 
+    perCategoryByFollowers() {
+      const categories = getCategories();
+
+      const perCat = influencers.reduce((_, inf) => {
+        inf.categories.forEach((c) => {
+          const entry = _.get(c);
+          if (!entry) {
+            _.set(c, [inf]);
+          } else {
+            _.set(c, [...entry, inf]);
+          }
+        });
+        return _;
+      }, new Map<string, Influencer[]>());
+
+      const perCatByFollowersDesc = Array.from(perCat).map(
+        ([category, infls]) => ({
+          ID: category,
+          value: infls.sort(({ followers: fA }, { followers: fB }) => fB - fA),
+        }),
+      );
+
+      return { nodes: perCatByFollowersDesc };
+    },
+
+    perCountryByEngAvg() {
+      const country = getCountries();
+
+      const perCountry = influencers.reduce((_, inf) => {
+        const { country } = inf;
+        const entry = _.get(country);
+        if (!entry) {
+          _.set(country, [inf]);
+        } else {
+          _.set(country, [...entry, inf]);
+        }
+
+        return _;
+      }, new Map<string, Influencer[]>());
+
+      const perCountryByEngAvg = Array.from(perCountry).map(
+        ([country, infls]) => ({
+          ID: country,
+          value: infls.sort(
+            (
+              { engagement: { average: avA } },
+              { engagement: { average: avB } },
+            ) => avB - avA,
+          ),
+        }),
+      );
+
+      return { nodes: perCountryByEngAvg };
+    },
+
     countries() {
       return getCountries();
     },

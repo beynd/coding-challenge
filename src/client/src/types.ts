@@ -41,11 +41,22 @@ export type Influencer = {
   screenName?: Maybe<Scalars['String']>;
 };
 
+export type PerKeyEntry = {
+  ID: Scalars['String'];
+  value: Array<Influencer>;
+};
+
+export type PerKeyResult = {
+  nodes: Array<Maybe<PerKeyEntry>>;
+};
+
 export type Query = {
   all: FilterResult;
   categories: Array<Scalars['String']>;
   countries: Array<Scalars['String']>;
   filter: FilterResult;
+  perCategoryByFollowers: PerKeyResult;
+  perCountryByEngAvg: PerKeyResult;
 };
 
 export type QueryFilterArgs = {

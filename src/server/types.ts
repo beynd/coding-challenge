@@ -45,11 +45,22 @@ export type Influencer = {
   screenName?: Maybe<Scalars['String']>;
 };
 
+export type PerKeyEntry = {
+  ID: Scalars['String'];
+  value: Array<Influencer>;
+};
+
+export type PerKeyResult = {
+  nodes: Array<Maybe<PerKeyEntry>>;
+};
+
 export type Query = {
   all: FilterResult;
   categories: Array<Scalars['String']>;
   countries: Array<Scalars['String']>;
   filter: FilterResult;
+  perCategoryByFollowers: PerKeyResult;
+  perCountryByEngAvg: PerKeyResult;
 };
 
 export type QueryFilterArgs = {
@@ -169,6 +180,8 @@ export type ResolversTypes = {
   FilterResult: ResolverTypeWrapper<FilterResult>;
   Influencer: ResolverTypeWrapper<Influencer>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
+  PerKeyEntry: ResolverTypeWrapper<PerKeyEntry>;
+  PerKeyResult: ResolverTypeWrapper<PerKeyResult>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
 };
@@ -181,6 +194,8 @@ export type ResolversParentTypes = {
   FilterResult: FilterResult;
   Influencer: Influencer;
   Int: Scalars['Int'];
+  PerKeyEntry: PerKeyEntry;
+  PerKeyResult: PerKeyResult;
   Query: {};
   String: Scalars['String'];
 };
@@ -227,6 +242,31 @@ export type InfluencerResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type PerKeyEntryResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['PerKeyEntry'] = ResolversParentTypes['PerKeyEntry'],
+> = {
+  ID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  value?: Resolver<
+    Array<ResolversTypes['Influencer']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type PerKeyResultResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['PerKeyResult'] = ResolversParentTypes['PerKeyResult'],
+> = {
+  nodes?: Resolver<
+    Array<Maybe<ResolversTypes['PerKeyEntry']>>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type QueryResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
@@ -248,11 +288,23 @@ export type QueryResolvers<
     ContextType,
     RequireFields<QueryFilterArgs, 'filter'>
   >;
+  perCategoryByFollowers?: Resolver<
+    ResolversTypes['PerKeyResult'],
+    ParentType,
+    ContextType
+  >;
+  perCountryByEngAvg?: Resolver<
+    ResolversTypes['PerKeyResult'],
+    ParentType,
+    ContextType
+  >;
 };
 
 export type Resolvers<ContextType = any> = {
   Engagement?: EngagementResolvers<ContextType>;
   FilterResult?: FilterResultResolvers<ContextType>;
   Influencer?: InfluencerResolvers<ContextType>;
+  PerKeyEntry?: PerKeyEntryResolvers<ContextType>;
+  PerKeyResult?: PerKeyResultResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 };
