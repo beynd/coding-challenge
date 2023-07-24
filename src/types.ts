@@ -18,3 +18,7 @@ export interface CsvRow {
   "Authentic engagement": string;
   "Engagement avg": string;
 }
+
+export interface Result {
+  [key: string]: Account;
+}
